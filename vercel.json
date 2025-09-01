@@ -30,15 +30,15 @@
   ],
   "env": {
     "CI_ENVIRONMENT": "production",
-    "AWS_ACCESS_KEY_ID": "@aws_access_key_id",
-    "AWS_SECRET_ACCESS_KEY": "@aws_secret_access_key",
+    "AWS_ACCESS_KEY_ID": "YOUR_AWS_ACCESS_KEY_ID",
+    "AWS_SECRET_ACCESS_KEY": "YOUR_AWS_SECRET_ACCESS_KEY",
     "AWS_REGION": "us-west-2",
     "S3_BUCKET": "rise-crm-storage-shreyas",
     "S3_REGION": "us-west-2",
-    "RDS_ENDPOINT": "@rds_endpoint",
+    "RDS_ENDPOINT": "YOUR_RDS_ENDPOINT",
     "RDS_DATABASE": "rise_crm",
-    "RDS_USERNAME": "@rds_username",
-    "RDS_PASSWORD": "@rds_password",
+    "RDS_USERNAME": "YOUR_RDS_USERNAME",
+    "RDS_PASSWORD": "YOUR_RDS_PASSWORD",
     "RDS_PORT": "3306"
   }
 }
