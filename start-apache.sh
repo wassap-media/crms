@@ -4,7 +4,14 @@ set -e
 # Set default port if PORT environment variable is not set
 PORT=${PORT:-80}
 
+# Set CodeIgniter environment for production
+export CI_ENVIRONMENT=${CI_ENVIRONMENT:-production}
+
+# Ensure environment variables are available to PHP
+echo "CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/environment
+
 echo "Starting Apache with PORT=$PORT"
+echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
 # Backup original configurations if they don't exist
 if [ ! -f "/etc/apache2/ports.conf.backup" ]; then

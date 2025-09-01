@@ -33,6 +33,10 @@ RUN { \
     echo "error_log=/var/log/apache2/php_errors.log"; \
 } > /usr/local/etc/php/conf.d/production.ini
 
+# Set environment variables for production
+ENV CI_ENVIRONMENT=production
+ENV app.baseURL=''
+
 # Set working directory
 WORKDIR /var/www/html
 
