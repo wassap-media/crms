@@ -36,28 +36,75 @@ echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.
 echo "SetEnv app.baseURL ''" >> /etc/apache2/conf-available/env.conf
 a2enconf env
 
-# Create a simple PHP test to verify configuration loading
+# Create a comprehensive PHP test to verify configuration loading
 cat > /var/www/html/test_config.php << 'EOF'
 <?php
-// Test configuration loading
+// Comprehensive configuration loading test
+echo "=== CodeIgniter Configuration Test ===\n";
+
+// Set environment
 $_ENV['CI_ENVIRONMENT'] = 'production';
 $_SERVER['CI_ENVIRONMENT'] = 'production';
+putenv('CI_ENVIRONMENT=production');
 
-require_once 'app/Config/Paths.php';
+echo "Environment: " . ($_ENV['CI_ENVIRONMENT'] ?? 'NOT SET') . "\n";
+
+// Test 1: Check if autoloader exists
+if (file_exists('vendor/autoload.php')) {
+    echo "✓ Autoloader found\n";
+    require_once 'vendor/autoload.php';
+} else {
+    echo "✗ Autoloader not found\n";
+    exit(1);
+}
+
+// Test 2: Check if Paths.php exists
+if (file_exists('app/Config/Paths.php')) {
+    echo "✓ Paths.php found\n";
+    require_once 'app/Config/Paths.php';
+} else {
+    echo "✗ Paths.php not found\n";
+    exit(1);
+}
+
+// Test 3: Check if Boot.php exists
 $paths = new Config\Paths();
-require $paths->systemDirectory . '/Boot.php';
+if (file_exists($paths->systemDirectory . '/Boot.php')) {
+    echo "✓ Boot.php found\n";
+    require $paths->systemDirectory . '/Boot.php';
+} else {
+    echo "✗ Boot.php not found\n";
+    exit(1);
+}
 
+// Test 4: Check if App.php exists
+if (file_exists('app/Config/App.php')) {
+    echo "✓ App.php found\n";
+} else {
+    echo "✗ App.php not found\n";
+    exit(1);
+}
+
+// Test 5: Try to load configuration
 try {
     $appConfig = config('App');
     if ($appConfig) {
-        echo "Configuration loaded successfully\n";
+        echo "✓ Configuration loaded successfully\n";
+        echo "  Base URL: " . $appConfig->baseURL . "\n";
+        echo "  Index Page: " . $appConfig->indexPage . "\n";
     } else {
-        echo "Configuration is null\n";
+        echo "✗ Configuration is null\n";
     }
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage() . "\n";
+    echo "✗ Error loading configuration: " . $e->getMessage() . "\n";
 }
+
+echo "=== Test Complete ===\n";
 EOF
+
+# Run the configuration test
+echo "Running configuration test..."
+php /var/www/html/test_config.php
 
 # Ensure proper file permissions
 chown -R www-data:www-data /var/www/html
