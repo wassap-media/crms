@@ -21,53 +21,27 @@ if (!$host || !$username || !$password) {
 try {
     // Connect to database
     $mysqli = new mysqli($host, $username, $password, $database, $port);
-    
+
     if ($mysqli->connect_error) {
         echo "✗ Connection failed: " . $mysqli->connect_error . "\n";
         exit(1);
     }
-    
+
     echo "✓ Connected to database successfully\n";
-    
+
     // Read the SQL file
-    $sqlFile = __DIR__ . '/install/database.sql';
-    if (!file_exists($sqlFile)) {
-        // Try alternative paths
-        $alternativePaths = [
-            __DIR__ . '/install/database.sql',
-            '/var/www/html/install/database.sql',
-            './install/database.sql',
-            '../install/database.sql'
-        ];
-        
-        foreach ($alternativePaths as $path) {
-            if (file_exists($path)) {
-                $sqlFile = $path;
-                break;
-            }
-        }
-    }
+    $sqlFile = __DIR__ . '/database.sql';
+    
+    // Check if the SQL file exists, if not, try alternative paths for debugging
     if (!file_exists($sqlFile)) {
         echo "✗ SQL file not found: $sqlFile\n";
         echo "Current directory: " . __DIR__ . "\n";
         echo "Checking available files:\n";
         
-        // List files in current directory
         $files = scandir(__DIR__);
         foreach ($files as $file) {
             if ($file != '.' && $file != '..') {
                 echo "  - $file\n";
-            }
-        }
-        
-        // List files in install directory if it exists
-        if (is_dir(__DIR__ . '/install')) {
-            echo "Files in install directory:\n";
-            $installFiles = scandir(__DIR__ . '/install');
-            foreach ($installFiles as $file) {
-                if ($file != '.' && $file != '..') {
-                    echo "  - install/$file\n";
-                }
             }
         }
         
@@ -76,26 +50,26 @@ try {
     
     echo "Reading SQL file: $sqlFile\n";
     $sql = file_get_contents($sqlFile);
-    
+
     if (!$sql) {
         echo "✗ Could not read SQL file\n";
         exit(1);
     }
-    
+
     echo "SQL file size: " . strlen($sql) . " bytes\n";
-    
+
     // Split SQL into individual statements
     $statements = array_filter(array_map('trim', explode(';', $sql)));
-    
+
     echo "Found " . count($statements) . " SQL statements\n";
-    
+
     // Execute each statement
     $successCount = 0;
     $errorCount = 0;
-    
+
     foreach ($statements as $statement) {
         if (empty($statement)) continue;
-        
+
         try {
             $result = $mysqli->query($statement);
             if ($result) {
@@ -111,19 +85,19 @@ try {
             echo "✗ Exception: " . $e->getMessage() . "\n";
         }
     }
-    
+
     echo "\n=== Setup Complete ===\n";
     echo "Successful statements: $successCount\n";
     echo "Failed statements: $errorCount\n";
-    
+
     if ($errorCount > 0) {
         echo "⚠ Some statements failed, but database may still be usable\n";
     } else {
         echo "✓ Database setup completed successfully!\n";
     }
-    
+
     $mysqli->close();
-    
+
 } catch (Exception $e) {
     echo "✗ Exception: " . $e->getMessage() . "\n";
     exit(1);
