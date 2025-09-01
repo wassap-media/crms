@@ -78,6 +78,11 @@ mkdir -p /var/www/html/writable/cache
 chmod -R 777 /var/www/html/writable/cache
 chown -R www-data:www-data /var/www/html/writable/cache
 
+# Ensure session directory exists and is writable
+mkdir -p /var/www/html/writable/session
+chmod -R 777 /var/www/html/writable/session
+chown -R www-data:www-data /var/www/html/writable/session
+
 # Test database connection
 echo "Testing database connection..."
 php /var/www/html/test_db.php

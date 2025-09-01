@@ -21,7 +21,7 @@ class Session extends BaseConfig
      *
      * @phpstan-var class-string<BaseHandler>
      */
-    public string $driver = 'CodeIgniter\Session\Handlers\DatabaseHandler';
+    public string $driver = 'CodeIgniter\Session\Handlers\FileHandler';
 
     /**
      * --------------------------------------------------------------------------
@@ -57,7 +57,7 @@ class Session extends BaseConfig
      *
      * IMPORTANT: You are REQUIRED to set a valid save path!
      */
-    public string $savePath = 'ci_sessions';
+    public string $savePath = WRITEPATH . 'session';
 
     /**
      * --------------------------------------------------------------------------
