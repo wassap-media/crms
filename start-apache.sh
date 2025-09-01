@@ -14,6 +14,9 @@ echo "CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/environment
 echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
 a2enconf env
 
+# Clear any cached configurations
+rm -rf /var/www/html/writable/cache/*
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
