@@ -135,11 +135,8 @@ try {
 echo "=== Test Complete ===\n";
 EOF
 
-# Run the configuration test (commented out for now)
-# echo "Running configuration test..."
-# php /var/www/html/test_config.php
-# echo "Configuration test completed with exit code: $?"
-echo "Skipping configuration test for now..."
+# Configuration test disabled for now
+echo "Configuration test disabled - proceeding with Apache startup..."
 
 # Ensure proper file permissions
 chown -R www-data:www-data /var/www/html
