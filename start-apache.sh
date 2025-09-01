@@ -82,6 +82,39 @@ if (file_exists('app/Config/App.php')) {
     echo "✓ App.php found\n";
 } else {
     echo "✗ App.php not found\n";
+    echo "Current working directory: " . getcwd() . "\n";
+    echo "Checking alternative paths...\n";
+    
+    // Check alternative paths
+    $possible_paths = [
+        'app/Config/App.php',
+        '/var/www/html/app/Config/App.php',
+        './app/Config/App.php',
+        '../app/Config/App.php'
+    ];
+    
+    foreach ($possible_paths as $path) {
+        if (file_exists($path)) {
+            echo "✓ App.php found at: $path\n";
+            break;
+        } else {
+            echo "✗ App.php not found at: $path\n";
+        }
+    }
+    
+    // List contents of app/Config directory
+    if (is_dir('app/Config')) {
+        echo "Contents of app/Config directory:\n";
+        $files = scandir('app/Config');
+        foreach ($files as $file) {
+            if ($file != '.' && $file != '..') {
+                echo "  - $file\n";
+            }
+        }
+    } else {
+        echo "app/Config directory not found\n";
+    }
+    
     exit(1);
 }
 
