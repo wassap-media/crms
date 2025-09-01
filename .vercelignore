@@ -1,0 +1,49 @@
+# Vercel ignore file
+node_modules/
+.git/
+.env
+*.log
+
+# CodeIgniter specific
+writable/cache/*
+writable/logs/*
+writable/session/*
+writable/uploads/*
+!writable/cache/.gitkeep
+!writable/logs/.gitkeep
+!writable/session/.gitkeep
+!writable/uploads/.gitkeep
+
+# Development files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Composer
+composer.phar
+composer.lock
+
+# Installation files
+install/
+
+# Temporary files
+test-upload.txt
+aws_integration_test.php
+
+# Terraform (not needed for deployment)
+terraform/
+
+# Docker files (not needed for Vercel)
+Dockerfile
+.dockerignore
+
+# Render files (not needed for Vercel)
+render.yaml

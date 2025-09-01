@@ -1,0 +1,4 @@
+Dockerfile
+src/Dockerfile
+start-apache.sh
+vercel.json
