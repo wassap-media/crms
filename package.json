@@ -5,8 +5,8 @@
   "main": "index.php",
   "scripts": {
     "start": "node server.js",
-    "build": "echo 'Build complete'",
-    "postinstall": "echo 'Ready to serve PHP via Node.js proxy'"
+    "build": "npm install --production",
+    "postinstall": "echo 'Dependencies installed'"
   },
   "engines": {
     "node": ">=18.0.0"
