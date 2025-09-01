@@ -27,6 +27,7 @@ files/temp/*
 
 # Database files
 *.sql
+!install/database.sql
 *.db
 
 # IDE and editor files
@@ -83,4 +84,4 @@ files/system/*
 !files/system/.gitkeep
 
 # Installation files (remove after setup)
-install/
+# Note: install/ directory is needed for database setup

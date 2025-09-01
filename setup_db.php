@@ -32,7 +32,45 @@ try {
     // Read the SQL file
     $sqlFile = __DIR__ . '/install/database.sql';
     if (!file_exists($sqlFile)) {
+        // Try alternative paths
+        $alternativePaths = [
+            __DIR__ . '/install/database.sql',
+            '/var/www/html/install/database.sql',
+            './install/database.sql',
+            '../install/database.sql'
+        ];
+        
+        foreach ($alternativePaths as $path) {
+            if (file_exists($path)) {
+                $sqlFile = $path;
+                break;
+            }
+        }
+    }
+    if (!file_exists($sqlFile)) {
         echo "✗ SQL file not found: $sqlFile\n";
+        echo "Current directory: " . __DIR__ . "\n";
+        echo "Checking available files:\n";
+        
+        // List files in current directory
+        $files = scandir(__DIR__);
+        foreach ($files as $file) {
+            if ($file != '.' && $file != '..') {
+                echo "  - $file\n";
+            }
+        }
+        
+        // List files in install directory if it exists
+        if (is_dir(__DIR__ . '/install')) {
+            echo "Files in install directory:\n";
+            $installFiles = scandir(__DIR__ . '/install');
+            foreach ($installFiles as $file) {
+                if ($file != '.' && $file != '..') {
+                    echo "  - install/$file\n";
+                }
+            }
+        }
+        
         exit(1);
     }
     
