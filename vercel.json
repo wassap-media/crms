@@ -1,6 +1,8 @@
 {
   "version": 2,
   "name": "rise-crm",
+  "buildCommand": "echo 'PHP build completed'",
+  "outputDirectory": ".",
   "functions": {
     "api/*.php": {
       "runtime": "vercel-php@0.6.0"

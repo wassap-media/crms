@@ -1,31 +1,26 @@
 {
   "name": "rise-crm",
   "version": "1.0.0",
-  "description": "RISE CRM - Ultimate Project Manager with AWS Integration",
-  "main": "index.php",
+  "description": "RISE CRM - Ultimate Project Manager",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "build": "npm install --production",
+    "build": "echo 'PHP application - no build step required'",
+    "dev": "php -S localhost:3000",
     "postinstall": "echo 'Dependencies installed'"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   },
   "dependencies": {
     "express": "^4.18.2"
   },
-  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "keywords": [
     "crm",
+    "project-management",
     "php",
-    "codeigniter",
-    "aws",
-    "project-manager"
+    "codeigniter"
   ],
-  "author": "wassap-media",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wassap-media/crms.git"
-  }
+  "author": "RISE CRM Team",
+  "license": "MIT"
 }
