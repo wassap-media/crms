@@ -4,7 +4,9 @@
   "buildCommand": "echo 'PHP build completed'",
   "outputDirectory": ".",
   "functions": {
-    "api/*.php": {}
+    "api/*.php": {
+      "maxDuration": 30
+    }
   },
   "routes": [
     {

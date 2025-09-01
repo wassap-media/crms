@@ -31,6 +31,39 @@ else
     echo "✗ Composer autoloader not found"
 fi
 
+# Set environment variables for Apache
+echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv app.baseURL ''" >> /etc/apache2/conf-available/env.conf
+a2enconf env
+
+# Create a simple PHP test to verify configuration loading
+cat > /var/www/html/test_config.php << 'EOF'
+<?php
+// Test configuration loading
+$_ENV['CI_ENVIRONMENT'] = 'production';
+$_SERVER['CI_ENVIRONMENT'] = 'production';
+
+require_once 'app/Config/Paths.php';
+$paths = new Config\Paths();
+require $paths->systemDirectory . '/Boot.php';
+
+try {
+    $appConfig = config('App');
+    if ($appConfig) {
+        echo "Configuration loaded successfully\n";
+    } else {
+        echo "Configuration is null\n";
+    }
+} catch (Exception $e) {
+    echo "Error: " . $e->getMessage() . "\n";
+}
+EOF
+
+# Ensure proper file permissions
+chown -R www-data:www-data /var/www/html
+chmod -R 755 /var/www/html
+chmod -R 777 /var/www/html/writable
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
