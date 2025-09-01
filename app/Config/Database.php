@@ -32,11 +32,11 @@ class Database extends Config
 	 */
 	public $default = [
 		'DSN'      => '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'rise_crm',
-		'DBDriver' => 'MySQLi',
+		'hostname' => '',
+		'username' => '',
+		'password' => '',
+		'database' => WRITEPATH . 'database.db',
+		'DBDriver' => 'SQLite3',
 		'DBPrefix' => 'rise_',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
@@ -82,6 +82,14 @@ class Database extends Config
 	{
 		parent::__construct();
 
+		// For development, use SQLite by default
+		if (ENVIRONMENT === 'development') {
+			// Ensure the writable directory exists
+			if (!is_dir(WRITEPATH)) {
+				mkdir(WRITEPATH, 0755, true);
+			}
+		}
+
 		// Override database configuration from environment variables (Render/AWS)
 		$envHostname = getenv('RDS_ENDPOINT') ?: getenv('database.default.hostname');
 		$envUsername = getenv('RDS_USERNAME') ?: getenv('database.default.username');
@@ -89,11 +97,15 @@ class Database extends Config
 		$envDatabase = getenv('RDS_DATABASE') ?: getenv('database.default.database');
 		$envPort     = getenv('RDS_PORT') ?: getenv('database.default.port');
 
-		if ($envHostname) { $this->default['hostname'] = $envHostname; }
-		if ($envUsername) { $this->default['username'] = $envUsername; }
-		if ($envPassword !== false && $envPassword !== null) { $this->default['password'] = $envPassword; }
-		if ($envDatabase) { $this->default['database'] = $envDatabase; }
-		if ($envPort) { $this->default['port'] = (int) $envPort; }
+		// Only use MySQL/RDS if environment variables are set
+		if ($envHostname && $envUsername && $envDatabase) {
+			$this->default['DBDriver'] = 'MySQLi';
+			$this->default['hostname'] = $envHostname;
+			$this->default['username'] = $envUsername;
+			$this->default['password'] = $envPassword ?: '';
+			$this->default['database'] = $envDatabase;
+			$this->default['port'] = $envPort ? (int) $envPort : 3306;
+		}
 
 		// Ensure that we always set the database group to 'tests' if
 		// we are currently running an automated test suite, so that

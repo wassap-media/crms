@@ -7,8 +7,20 @@ PORT=${PORT:-80}
 # Set CodeIgniter environment for production
 export CI_ENVIRONMENT=${CI_ENVIRONMENT:-production}
 
+# Set AWS RDS environment variables for database connection
+export RDS_ENDPOINT=${RDS_ENDPOINT:-}
+export RDS_USERNAME=${RDS_USERNAME:-}
+export RDS_PASSWORD=${RDS_PASSWORD:-}
+export RDS_DATABASE=${RDS_DATABASE:-}
+export RDS_PORT=${RDS_PORT:-3306}
+
 # Ensure environment variables are available to PHP
 echo "CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/environment
+echo "RDS_ENDPOINT=$RDS_ENDPOINT" >> /etc/environment
+echo "RDS_USERNAME=$RDS_USERNAME" >> /etc/environment
+echo "RDS_PASSWORD=$RDS_PASSWORD" >> /etc/environment
+echo "RDS_DATABASE=$RDS_DATABASE" >> /etc/environment
+echo "RDS_PORT=$RDS_PORT" >> /etc/environment
 
 # Set environment variable for Apache/PHP
 echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
@@ -34,6 +46,11 @@ fi
 # Set environment variables for Apache
 echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
 echo "SetEnv app.baseURL ''" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv RDS_ENDPOINT $RDS_ENDPOINT" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv RDS_USERNAME $RDS_USERNAME" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv RDS_PASSWORD $RDS_PASSWORD" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv RDS_DATABASE $RDS_DATABASE" >> /etc/apache2/conf-available/env.conf
+echo "SetEnv RDS_PORT $RDS_PORT" >> /etc/apache2/conf-available/env.conf
 a2enconf env
 
 # Diagnostic script removed - proceeding with Apache startup
