@@ -1,20 +1,11 @@
 {
   "version": 2,
   "name": "rise-crm",
-  "builds": [
-    {
-      "src": "api/index.php",
-      "use": "vercel-php@0.6.0"
-    },
-    {
-      "src": "assets/**",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "files/**",
-      "use": "@vercel/static"
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.6.0"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/assets/(.*)",
@@ -49,10 +40,5 @@
     "RDS_USERNAME": "@rds_username",
     "RDS_PASSWORD": "@rds_password",
     "RDS_PORT": "3306"
-  },
-  "functions": {
-    "api/*.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
   }
 }
