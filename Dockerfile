@@ -4,6 +4,7 @@ FROM php:8.2-apache
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     libzip-dev \
+    libicu-dev \
     zip \
     unzip \
     curl \
@@ -12,6 +13,7 @@ RUN apt-get update && apt-get install -y \
     pdo \
     pdo_mysql \
     zip \
+    intl \
     && a2enmod rewrite \
     && rm -rf /var/lib/apt/lists/*
 
