@@ -17,6 +17,20 @@ a2enconf env
 # Clear any cached configurations
 rm -rf /var/www/html/writable/cache/*
 
+# Ensure proper permissions for writable directory
+chmod -R 777 /var/www/html/writable
+
+# Set proper environment for PHP
+echo "export CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/profile
+echo "export CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/bash.bashrc
+
+# Ensure composer autoloader is working
+if [ -f "/var/www/html/vendor/autoload.php" ]; then
+    echo "✓ Composer autoloader found"
+else
+    echo "✗ Composer autoloader not found"
+fi
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
