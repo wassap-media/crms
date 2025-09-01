@@ -43,9 +43,6 @@ WORKDIR /var/www/html
 # Copy application files
 COPY . .
 
-# Ensure App.php is properly copied (explicit copy as backup)
-COPY app/Config/App.php /var/www/html/app/Config/App.php
-
 # Install Composer dependencies if composer.json exists
 RUN if [ -f "composer.json" ]; then \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
