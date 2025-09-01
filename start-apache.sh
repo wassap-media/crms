@@ -10,6 +10,10 @@ export CI_ENVIRONMENT=${CI_ENVIRONMENT:-production}
 # Ensure environment variables are available to PHP
 echo "CI_ENVIRONMENT=$CI_ENVIRONMENT" >> /etc/environment
 
+# Set environment variable for Apache/PHP
+echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
+a2enconf env
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
