@@ -1,0 +1,29 @@
+{
+  "name": "rise-crm",
+  "version": "1.0.0",
+  "description": "RISE CRM - Ultimate Project Manager with AWS Integration",
+  "main": "index.php",
+  "scripts": {
+    "start": "php -S 0.0.0.0:$PORT -t .",
+    "build": "echo 'Installing PHP dependencies...' && curl -sS https://getcomposer.org/installer | php && php composer.phar install --no-dev --optimize-autoloader",
+    "postinstall": "echo 'PHP application ready'"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "crm",
+    "php",
+    "codeigniter",
+    "aws",
+    "project-manager"
+  ],
+  "author": "wassap-media",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wassap-media/crms.git"
+  }
+}
