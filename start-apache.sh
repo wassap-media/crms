@@ -43,6 +43,16 @@ else
     echo "✗ Composer autoloader not found"
 fi
 
+# Debug environment variables
+echo "=== Environment Variables Debug ==="
+echo "CI_ENVIRONMENT: $CI_ENVIRONMENT"
+echo "RDS_ENDPOINT: $RDS_ENDPOINT"
+echo "RDS_USERNAME: $RDS_USERNAME"
+echo "RDS_DATABASE: $RDS_DATABASE"
+echo "RDS_PORT: $RDS_PORT"
+echo "RDS_PASSWORD: [HIDDEN]"
+echo "=================================="
+
 # Set environment variables for Apache
 echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
 echo "SetEnv app.baseURL ''" >> /etc/apache2/conf-available/env.conf
@@ -67,6 +77,10 @@ chmod -R 777 /var/www/html/writable
 mkdir -p /var/www/html/writable/cache
 chmod -R 777 /var/www/html/writable/cache
 chown -R www-data:www-data /var/www/html/writable/cache
+
+# Test database connection
+echo "Testing database connection..."
+php /var/www/html/test_db.php
 
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
