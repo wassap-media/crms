@@ -138,6 +138,7 @@ EOF
 # Run the configuration test
 echo "Running configuration test..."
 php /var/www/html/test_config.php
+echo "Configuration test completed with exit code: $?"
 
 # Ensure proper file permissions
 chown -R www-data:www-data /var/www/html

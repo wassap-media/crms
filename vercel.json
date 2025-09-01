@@ -3,11 +3,6 @@
   "name": "rise-crm",
   "buildCommand": "echo 'PHP build completed'",
   "outputDirectory": ".",
-  "functions": {
-    "api/*.php": {
-      "maxDuration": 30
-    }
-  },
   "routes": [
     {
       "src": "/assets/(.*)",
