@@ -51,18 +51,20 @@ RUN chown -R www-data:www-data /var/www/html \
     && if [ -d "writable" ]; then chmod -R 777 writable; fi \
     && if [ -d "files" ]; then chmod -R 777 files; fi
 
-# Configure Apache to use PORT environment variable (Render requirement)
-RUN sed -i 's/Listen 80/Listen ${PORT:-80}/' /etc/apache2/ports.conf \
-    && sed -i 's/<VirtualHost \*:80>/<VirtualHost *:${PORT:-80}>/' /etc/apache2/sites-available/000-default.conf
+# Copy and setup startup script
+COPY start-apache.sh /usr/local/bin/start-apache.sh
+RUN chmod +x /usr/local/bin/start-apache.sh \
+    && cp /etc/apache2/ports.conf /etc/apache2/ports.conf.backup \
+    && cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.backup
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-80}/health || exit 1
+    CMD curl -f http://localhost:${PORT:-80}/health.php || exit 1
 
 # Expose port (Render will override this)
-EXPOSE ${PORT:-80}
+EXPOSE 80
 
-# Start Apache in foreground
-CMD ["sh", "-c", "apache2-foreground"]
+# Start Apache using our custom script
+CMD ["/usr/local/bin/start-apache.sh"]
 
 
