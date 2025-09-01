@@ -46,6 +46,11 @@ chown -R www-data:www-data /var/www/html
 chmod -R 755 /var/www/html
 chmod -R 777 /var/www/html/writable
 
+# Ensure cache directory exists and is writable
+mkdir -p /var/www/html/writable/cache
+chmod -R 777 /var/www/html/writable/cache
+chown -R www-data:www-data /var/www/html/writable/cache
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
