@@ -7,9 +7,7 @@
 !.env.example
 
 # Configuration files with sensitive data
-app/Config/Database.php
-app/Config/App.php
-app/Config/Rise.php
+# Note: Rise.php is required for the application to function
 
 # Writable directories
 writable/cache/*
