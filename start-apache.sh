@@ -87,6 +87,10 @@ chown -R www-data:www-data /var/www/html/writable/session
 echo "Testing database connection..."
 php /var/www/html/test_db.php
 
+# Setup database schema if needed
+echo "Setting up database schema..."
+php /var/www/html/setup_db.php
+
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
 
