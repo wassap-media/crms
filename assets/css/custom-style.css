@@ -14,3 +14,24 @@
     text-align: center !important;
     margin-bottom: 10px !important;
 }
+
+/* Fix favicon positioning to prevent overlay on dashboard */
+.dashboard-image {
+    position: relative !important;
+    z-index: 1 !important;
+    display: inline-block !important;
+}
+
+/* Ensure favicon doesn't interfere with dashboard content */
+.brand-logo-mini img {
+    position: relative !important;
+    z-index: 1 !important;
+    display: inline-block !important;
+}
+
+/* Fix any potential favicon overlay issues */
+.favicon, .dashboard-image {
+    position: relative !important;
+    z-index: auto !important;
+    pointer-events: none !important;
+}
