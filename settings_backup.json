@@ -1,0 +1,362 @@
+[
+    {
+        "setting_name": "accepted_file_formats",
+        "setting_value": "jpg,jpeg,png,doc,xlsx,txt,pdf,zip,webm",
+        "type": "app"
+    },
+    {
+        "setting_name": "allowed_ip_addresses",
+        "setting_value": "",
+        "type": "app"
+    },
+    {
+        "setting_name": "app_title",
+        "setting_value": "Shreyas Media CRM",
+        "type": "app"
+    },
+    {
+        "setting_name": "contract_color",
+        "setting_value": "#000000",
+        "type": "app"
+    },
+    {
+        "setting_name": "conversion_rate",
+        "setting_value": "a:0:{}",
+        "type": "app"
+    },
+    {
+        "setting_name": "currency_position",
+        "setting_value": "left",
+        "type": "app"
+    },
+    {
+        "setting_name": "currency_symbol",
+        "setting_value": "\u20b9",
+        "type": "app"
+    },
+    {
+        "setting_name": "date_format",
+        "setting_value": "d-m-Y",
+        "type": "app"
+    },
+    {
+        "setting_name": "decimal_separator",
+        "setting_value": ".",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_contract_template",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_currency",
+        "setting_value": "INR",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_due_date_after_billing_date",
+        "setting_value": "14",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_permissions_for_non_primary_contact",
+        "setting_value": "projects",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_proposal_template",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "default_theme_color",
+        "setting_value": "F2F2F2",
+        "type": "app"
+    },
+    {
+        "setting_name": "email_sent_from_address",
+        "setting_value": "admin_email",
+        "type": "app"
+    },
+    {
+        "setting_name": "email_sent_from_name",
+        "setting_value": "admin_first_name",
+        "type": "app"
+    },
+    {
+        "setting_name": "enable_audio_recording",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "estimate_color",
+        "setting_value": "#000000",
+        "type": "app"
+    },
+    {
+        "setting_name": "favicon",
+        "setting_value": "a:1:{s:9:\"file_name\";s:30:\"_file68b2dd22ad749-favicon.png\";}",
+        "type": "app"
+    },
+    {
+        "setting_name": "first_day_of_week",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "invoice_color",
+        "setting_value": "#000000",
+        "type": "app"
+    },
+    {
+        "setting_name": "invoice_item_list_background",
+        "setting_value": "#f4f4f4",
+        "type": "app"
+    },
+    {
+        "setting_name": "invoice_logo",
+        "setting_value": "default-invoice-logo.png",
+        "type": "app"
+    },
+    {
+        "setting_name": "invoice_number_format",
+        "setting_value": "{SERIAL}",
+        "type": "app"
+    },
+    {
+        "setting_name": "invoice_prefix",
+        "setting_value": "INVOICE #",
+        "type": "app"
+    },
+    {
+        "setting_name": "item_purchase_code",
+        "setting_value": "ITEM-PURCHASE-CODE",
+        "type": "app"
+    },
+    {
+        "setting_name": "landing_page",
+        "setting_value": "",
+        "type": "app"
+    },
+    {
+        "setting_name": "language",
+        "setting_value": "english",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_announcement",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_attendance",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_chat",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_contract",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_estimate",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_estimate_request",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_event",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_expense",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_file_manager",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_gantt",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_help",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_invoice",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_knowledge_base",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_lead",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_leave",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_message",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_note",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_order",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_project_timesheet",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_proposal",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_reminder",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_subscription",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_ticket",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_timeline",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "module_todo",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "no_of_decimals",
+        "setting_value": "2",
+        "type": "app"
+    },
+    {
+        "setting_name": "order_color",
+        "setting_value": "#000000",
+        "type": "app"
+    },
+    {
+        "setting_name": "proposal_color",
+        "setting_value": "#000000",
+        "type": "app"
+    },
+    {
+        "setting_name": "pwa_theme_color",
+        "setting_value": "#1c2026",
+        "type": "app"
+    },
+    {
+        "setting_name": "show_background_image_in_signin_page",
+        "setting_value": "yes",
+        "type": "app"
+    },
+    {
+        "setting_name": "show_logo_in_signin_page",
+        "setting_value": "yes",
+        "type": "app"
+    },
+    {
+        "setting_name": "show_the_status_checkbox_in_tasks_list",
+        "setting_value": "1",
+        "type": "app"
+    },
+    {
+        "setting_name": "show_theme_color_changer",
+        "setting_value": "yes",
+        "type": "app"
+    },
+    {
+        "setting_name": "signin_page_background",
+        "setting_value": "a:4:{s:9:\"file_name\";s:56:\"system_file68b6881269d27-pexels-markusspiske-1679719.jpg\";s:9:\"file_size\";s:6:\"793321\";s:7:\"file_id\";N;s:12:\"service_type\";N;}",
+        "type": "app"
+    },
+    {
+        "setting_name": "site_logo",
+        "setting_value": "a:1:{s:9:\"file_name\";s:32:\"_file68b2f90a18b7a-site-logo.png\";}",
+        "type": "app"
+    },
+    {
+        "setting_name": "system_file_path",
+        "setting_value": "files\/system\/",
+        "type": "app"
+    },
+    {
+        "setting_name": "task_point_range",
+        "setting_value": "5",
+        "type": "app"
+    },
+    {
+        "setting_name": "temp_file_path",
+        "setting_value": "files\/temp\/",
+        "type": "app"
+    },
+    {
+        "setting_name": "time_format",
+        "setting_value": "capital",
+        "type": "app"
+    },
+    {
+        "setting_name": "timezone",
+        "setting_value": "Asia\/Kolkata",
+        "type": "app"
+    },
+    {
+        "setting_name": "user_1_dashboard",
+        "setting_value": "",
+        "type": "user"
+    },
+    {
+        "setting_name": "user_2_dashboard",
+        "setting_value": "",
+        "type": "user"
+    },
+    {
+        "setting_name": "weekends",
+        "setting_value": "0",
+        "type": "app"
+    }
+]

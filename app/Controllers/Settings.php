@@ -115,6 +115,15 @@ class Settings extends Security_Controller {
             log_message('error', '[ERROR] {exception}', ['exception' => $ex]);
         }
 
+        // Update settings backup after successful save
+        try {
+            if (file_exists(FCPATH . 'update_settings_backup.php')) {
+                exec('php ' . FCPATH . 'update_settings_backup.php > /dev/null 2>&1 &');
+            }
+        } catch (\Exception $ex) {
+            log_message('error', '[ERROR] Failed to update settings backup: {exception}', ['exception' => $ex]);
+        }
+
         if ($has_php_file_format) {
             echo json_encode(array("success" => false, 'message' => app_lang('php_file_format_is_not_allowed')));
         } else {

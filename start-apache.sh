@@ -30,8 +30,10 @@ echo "CUSTOM_DOMAIN=$CUSTOM_DOMAIN" >> /etc/environment
 echo "SetEnv CI_ENVIRONMENT $CI_ENVIRONMENT" >> /etc/apache2/conf-available/env.conf
 a2enconf env
 
-# Clear any cached configurations
+# Clear any cached configurations and settings
 rm -rf /var/www/html/writable/cache/*
+rm -rf /var/www/html/writable/session/*
+echo "Cache and session cleared"
 
 # Ensure proper permissions for writable directory
 chmod -R 777 /var/www/html/writable
@@ -96,6 +98,15 @@ chown -R www-data:www-data /var/www/html/files/temp
 
 # Database is now pre-configured and ready
 echo "Database connection configured and ready"
+
+# Restore settings from backup to ensure they persist after deployment
+if [ -f "/var/www/html/restore_settings.php" ]; then
+    echo "Restoring settings from backup..."
+    php /var/www/html/restore_settings.php
+    echo "Settings restoration completed"
+else
+    echo "No settings restore script found, skipping..."
+fi
 
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
