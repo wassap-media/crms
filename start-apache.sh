@@ -83,6 +83,11 @@ mkdir -p /var/www/html/writable/session
 chmod -R 777 /var/www/html/writable/session
 chown -R www-data:www-data /var/www/html/writable/session
 
+# Ensure temp directory exists and is writable for file uploads
+mkdir -p /var/www/html/files/temp
+chmod -R 777 /var/www/html/files/temp
+chown -R www-data:www-data /var/www/html/files/temp
+
 # Database is now pre-configured and ready
 echo "Database connection configured and ready"
 
