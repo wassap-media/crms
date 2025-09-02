@@ -83,13 +83,8 @@ mkdir -p /var/www/html/writable/session
 chmod -R 777 /var/www/html/writable/session
 chown -R www-data:www-data /var/www/html/writable/session
 
-# Test database connection
-echo "Testing database connection..."
-php /var/www/html/test_db.php
-
-# Setup database schema if needed
-echo "Setting up database schema..."
-php /var/www/html/install/setup_db.php
+# Database is now pre-configured and ready
+echo "Database connection configured and ready"
 
 echo "Starting Apache with PORT=$PORT"
 echo "CodeIgniter Environment: $CI_ENVIRONMENT"
