@@ -11,7 +11,7 @@
     },
     {
         "setting_name": "app_title",
-        "setting_value": "Shreyas Media CRM",
+        "setting_value": "Shreyas Media CRM - theshreyasmedia.com",
         "type": "app"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
         "setting_name": "favicon",
-        "setting_value": "a:1:{s:9:\"file_name\";s:30:\"_file68b2dd22ad749-favicon.png\";}",
+        "setting_value": "a:1:{s:9:\"file_name\";s:30:\"_file68b69c764af21-favicon.png\";}",
         "type": "app"
     },
     {
@@ -285,6 +285,11 @@
         "type": "app"
     },
     {
+        "setting_name": "pwa_icon",
+        "setting_value": "a:1:{s:9:\"file_name\";s:31:\"_file68b69ce67f1c9-pwa_icon.png\";}",
+        "type": "app"
+    },
+    {
         "setting_name": "pwa_theme_color",
         "setting_value": "#1c2026",
         "type": "app"
@@ -311,12 +316,12 @@
     },
     {
         "setting_name": "signin_page_background",
-        "setting_value": "a:4:{s:9:\"file_name\";s:56:\"system_file68b6881269d27-pexels-markusspiske-1679719.jpg\";s:9:\"file_size\";s:6:\"793321\";s:7:\"file_id\";N;s:12:\"service_type\";N;}",
+        "setting_value": "a:4:{s:9:\"file_name\";s:56:\"system_file68b69c5f23f9c-pexels-markusspiske-1679719.jpg\";s:9:\"file_size\";s:6:\"793321\";s:7:\"file_id\";N;s:12:\"service_type\";N;}",
         "type": "app"
     },
     {
         "setting_name": "site_logo",
-        "setting_value": "a:1:{s:9:\"file_name\";s:32:\"_file68b2f90a18b7a-site-logo.png\";}",
+        "setting_value": "a:1:{s:9:\"file_name\";s:32:\"_file68b69c28a6e0a-site-logo.png\";}",
         "type": "app"
     },
     {

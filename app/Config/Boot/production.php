@@ -25,9 +25,9 @@ if (!headers_sent()) {
 }
 
 // Custom domain configuration
-$custom_domain = 'crm.shreyasmedia.net';
-if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === $custom_domain) {
-    // Force HTTPS for custom domain
+$custom_domains = ['theshreyasmedia.com', 'www.theshreyasmedia.com', 'crm.shreyasmedia.net'];
+if (isset($_SERVER['HTTP_HOST']) && in_array($_SERVER['HTTP_HOST'], $custom_domains)) {
+    // Force HTTPS for custom domains
     if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
         $redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
         header("Location: $redirectURL", true, 301);
