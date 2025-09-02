@@ -37,7 +37,7 @@ class Database extends Config
 		'password' => '',
 		'database' => WRITEPATH . 'database.db',
 		'DBDriver' => 'SQLite3',
-		'DBPrefix' => 'rise_',
+		'DBPrefix' => '',
 		'pConnect' => false,
 		'DBDebug'  => (ENVIRONMENT !== 'production'),
 		'charset'  => 'utf8',
