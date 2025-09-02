@@ -2,14 +2,15 @@
 
 /* Increase logo size in sidebar */
 .brand-logo img {
-    max-width: 350px !important;
-    max-height: 60px !important;
+    max-width: 300px !important;
+    max-height: 45px !important;
     width: auto !important;
     height: auto !important;
 }
 
-/* Ensure logo maintains aspect ratio */
+/* Ensure logo maintains aspect ratio and proper spacing */
 .brand-logo {
-    padding: 10px 15px !important;
+    padding: 8px 15px !important;
     text-align: center !important;
+    margin-bottom: 10px !important;
 }
