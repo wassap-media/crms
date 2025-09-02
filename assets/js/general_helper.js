@@ -548,16 +548,17 @@ function toggleLeftMenu(keyPressed) {
 
 function keyboardShortcuts(keyupCode) {
     var shortcuts = {
-        "84": "#js-quick-add-task",
-        "77": "#js-quick-add-multiple-task",
-        "73": "#js-quick-add-project-time",
-        "69": "#js-quick-add-event",
-        "78": "#js-quick-add-note",
-        "68": "#js-quick-add-to-do",
-        "83": "#js-quick-add-ticket",
-        "191": "#global-search-btn",
-        "37": ".app-modal-previous-button",
-        "39": ".app-modal-next-button"
+        // All keyboard shortcuts disabled
+        // "84": "#js-quick-add-task", // T - Add Task
+        // "77": "#js-quick-add-multiple-task", // M - Add Multiple Tasks
+        // "73": "#js-quick-add-project-time", // I - Add Project Time
+        // "69": "#js-quick-add-event", // E - Add Event
+        // "78": "#js-quick-add-note", // N - Add Note
+        // "68": "#js-quick-add-to-do", // D - Add To-Do
+        // "83": "#js-quick-add-ticket", // S - Add Ticket
+        // "191": "#global-search-btn", // / - Global Search
+        // "37": ".app-modal-previous-button", // ← - Previous Modal
+        // "39": ".app-modal-next-button" // → - Next Modal
     };
 
     return shortcuts[keyupCode];
