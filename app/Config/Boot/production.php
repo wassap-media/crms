@@ -1,40 +1,36 @@
 <?php
 
-/*
- |--------------------------------------------------------------------------
- | ERROR DISPLAY
- |--------------------------------------------------------------------------
- | Don't show ANY in production environments. Instead, let the system catch
- | it and display a generic error message.
- |
- | If you set 'display_errors' to '1', CI4's detailed error report will show.
+/**
+ * Production Environment Configuration
+ * This file is loaded when CI_ENVIRONMENT is set to 'production'
  */
-error_reporting(E_ALL & ~E_DEPRECATED);
-// If you want to suppress more types of errors.
-// error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_STRICT & ~E_USER_NOTICE & ~E_USER_DEPRECATED);
-ini_set('display_errors', '0');
 
-/*
- |--------------------------------------------------------------------------
- | DEBUG MODE
- |--------------------------------------------------------------------------
- | Debug mode is an experimental flag that can allow changes throughout
- | the system. It's not widely used currently, and may not survive
- | release of the framework.
- */
-defined('CI_DEBUG') || define('CI_DEBUG', false);
-
-/*
- |--------------------------------------------------------------------------
- | ENVIRONMENT CONFIGURATION
- |--------------------------------------------------------------------------
- | Ensure the environment is properly set for production
- */
-if (!defined('ENVIRONMENT')) {
-    define('ENVIRONMENT', 'production');
-}
-
-// Ensure CI_ENVIRONMENT is set in $_ENV and $_SERVER
+// Ensure environment is set correctly
+define('ENVIRONMENT', 'production');
 $_ENV['CI_ENVIRONMENT'] = 'production';
 $_SERVER['CI_ENVIRONMENT'] = 'production';
 putenv('CI_ENVIRONMENT=production');
+
+// Production-specific settings
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+
+// Security headers for production
+if (!headers_sent()) {
+    header('X-Content-Type-Options: nosniff');
+    header('X-Frame-Options: DENY');
+    header('X-XSS-Protection: 1; mode=block');
+    header('Referrer-Policy: strict-origin-when-cross-origin');
+}
+
+// Custom domain configuration
+$custom_domain = 'crm.shreyasmedia.net';
+if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] === $custom_domain) {
+    // Force HTTPS for custom domain
+    if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
+        $redirectURL = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        header("Location: $redirectURL", true, 301);
+        exit();
+    }
+}
